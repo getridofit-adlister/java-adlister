@@ -12,13 +12,13 @@ public class CountServlet extends HttpServlet {
 
         res.setContentType("text/HTML");
         PrintWriter out = res.getWriter();
-        out.println("<h1>" + count + "</h1>");
 
-        if (req.getParameter("reset") != null) {
+        String action = req.getParameter("action");
+        if (action != null && action.equals("reset")) {
             count = 1;
         } else {
             count++;
         }
-
+        out.println("<h1>" + count + "</h1>");
     }
 }
