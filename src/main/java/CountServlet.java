@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "CountServlet", urlPatterns = "/count")
 public class CountServlet extends HttpServlet {
-    int count = 0;
+    private int count = 0;
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
         res.setContentType("text/HTML");
