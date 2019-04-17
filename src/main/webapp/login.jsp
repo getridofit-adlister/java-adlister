@@ -40,19 +40,33 @@
     </form>
 </div>
 
-<% String username = request.getParameter("username");%>
-<% String password = request.getParameter("password");%>
-<% String adminUsername = "admin"; %>
-<% String adminPassword = "password"; %>;
+<%--   initial I solved the exercise   --%>
 
+<%--<% String username = request.getParameter("username");%>--%>
+<%--<% String password = request.getParameter("password");%>--%>
+<%--<% String adminUsername = "admin"; %>--%>
+<%--<% String adminPassword = "password"; %>;--%>
+
+<%--<%--%>
+<%--if (username != null && password != null) {--%>
+    <%--if (username.equals(adminUsername) && password.equals(adminPassword)) {--%>
+        <%--response.sendRedirect("http://localhost:8080/profile.jsp");--%>
+    <%--} else {--%>
+        <%--response.sendRedirect("http://localhost:8080/login.jsp");--%>
+    <%--}--%>
+<%--}--%>
+<%--%>--%>
+
+
+<%--   sleeker solution using the getMehtod method on the request object. also used filename rather than URL for redirect   --%>
 <%
-if (username != null && password != null) {
-    if (username.equals(adminUsername) && password.equals(adminPassword)) {
-        response.sendRedirect("http://localhost:8080/profile.jsp");
-    } else {
-        response.sendRedirect("http://localhost:8080/login.jsp");
+    if(request.getMethod().toLowerCase().equals("post")) {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if (username.toLowerCase().equals("admin") && password.equals("password")) {
+            response.sendRedirect("profile.jsp");
+        }
     }
-}
 %>
 
 <jsp:include page="partials/footer.jsp" />
