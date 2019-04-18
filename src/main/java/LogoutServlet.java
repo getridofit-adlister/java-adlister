@@ -9,6 +9,7 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getSession().removeAttribute("user");
+        request.getSession().invalidate();
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 }
