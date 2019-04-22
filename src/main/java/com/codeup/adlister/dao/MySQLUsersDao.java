@@ -25,10 +25,9 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findByUsername(String username) {
-//        User user = new User();
+        String sql = "SELECT * FROM users WHERE username = ?";
         try {
 
-            String sql = "SELECT * FROM ads WHERE username = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
