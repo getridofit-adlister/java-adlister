@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
-    <form action="/ads/register" method="post">
+    <form action="/register" method="post">
         <div class="row">
             <div class="col">
                 <input type="text" class="form-control" name="username" placeholder="username">

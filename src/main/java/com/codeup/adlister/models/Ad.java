@@ -18,6 +18,7 @@ public class Ad {
         this.title = title;
         this.description = description;
     }
+    public Ad(){}
 
     public long getId() {
         return id;

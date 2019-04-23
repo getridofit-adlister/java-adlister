@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 
-@WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/ads/register")
+@WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO: show the registration form
-        request.getRequestDispatcher("/WEB-INF/ads/register.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -31,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
                 || password.isEmpty();
 
         if (invalidAttempt) {
-            response.sendRedirect("/ads/register");
+            response.sendRedirect("/register");
 
         } else {
             // TODO: create a new user based off of the submitted information
