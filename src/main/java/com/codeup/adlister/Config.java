@@ -4,7 +4,7 @@ public class Config {
     public String getUrl() {
         return "jdbc:mysql://localhost/movies_db?serverTimezone=UTC&useSSL=false";
     }
-    public String getUser() {
+    public String getUsername() {
         return "someuser";
     }
     public String getPassword() {
