@@ -5,9 +5,9 @@ public class Config {
         return "jdbc:mysql://localhost/adlister_db?serverTimezone=UTC&useSSL=false";
     }
     public String getUsername() {
-        return "someuser";
+        return "travisvela";
     }
     public String getPassword() {
-        return "strongpassword";
+        return "sivarTravis1979";
     }
 }
