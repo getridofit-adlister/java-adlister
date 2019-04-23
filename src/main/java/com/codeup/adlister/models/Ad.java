@@ -5,6 +5,7 @@ public class Ad {
     private long userId;
     private String title;
     private String description;
+    private String category;
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
