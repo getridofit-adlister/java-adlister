@@ -33,8 +33,11 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
+        System.out.println(password);
+
         // create and save a new user
         User user = new User(username, email, password);
+        System.out.println(user.getPassword());
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
     }
