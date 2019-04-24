@@ -5,14 +5,22 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="/ads">Adlister</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-expand-lg navbar-right mx-auto">
             <c:if test="${user.username == null}" >
                 <li><a href="/login">Login</a></li>
             </c:if>
             <c:if test="${user.username !=null}" >
                 <li><a href="/logout">Logout</a></li>
             </c:if>
-
+            <c:if test="${user.username != null}" >
+                <li><a href="/ads/create">Create Add</a></li>
+            </c:if>
+            <c:if test="${user.username != null}" >
+                <li><a>Update Ad</a></li>
+            </c:if>
+            <c:if test="${user.username != null}" >
+                <li><a>Delete Ad</a></li>
+            </c:if>
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
