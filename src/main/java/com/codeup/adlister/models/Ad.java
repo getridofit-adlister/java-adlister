@@ -1,11 +1,15 @@
 package com.codeup.adlister.models;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Ad {
     private long id;
     private long userId;
     private String title;
     private String description;
-    private String category;
+    private Long categories;
+    private String date;
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
@@ -14,10 +18,12 @@ public class Ad {
         this.description = description;
     }
 
-    public Ad(long userId, String title, String description) {
+    public Ad(long userId, String title, String description, long categories) {
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.categories = categories;
+        this.date = setDate();
     }
 
     public long getId() {
@@ -48,7 +54,22 @@ public class Ad {
         return description;
     }
 
+    public Long getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Long categories) {
+        this.categories = categories;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    private String setDate() {
+        String pattern = "yyyy-mm-dd";
+        SimpleDateFormat simpleDate = new SimpleDateFormat(pattern);
+        String date = simpleDate.format(new Date());
+        return date;
     }
 }

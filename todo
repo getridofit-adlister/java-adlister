@@ -1,0 +1,24 @@
+
+- Create a page that shows the information about an individual ad. This page should show all the information about that ad, as well as the information about the user that posted the ad.
+
+- Implement functionality that allows users to search through the ads in your database.
+
+- Clean up the code. You'll notice there is some duplicated code in our ads DAO and our users DAO. How could you create an abstraction for this?
+
+- Allow users to update and delete ads. You will need to make some changes to the frontend so that users can discover this functionality, as well as implement the backend logic necessary to update your database.
+
+- Allow users to update their profile information.
+
+- Validate data. Ensure that the data we get from our users is valid before saving it to the database. Consider creating some classes related to validation.
+
+- Error messages. Isn't it frustrating when a site won't let you submit a form but won't tell you why? Implement functionality to display error messages to users if they do something wrong, for example, if they try to register but their passwords don't match, or if they try to create a ad without a title.
+
+- Consider storing error messages temporarily in the session and having a messages.jsp partial to handle this.
+
+- Sticky Forms. When a submission is rejected because one or more of our validation constraints fails, we should still see the old values in the form for creating an ad, the users' input should not be erased.
+
+- Allow an Ad to have many categories. Create a catagories table and implement all the backend logic necessary to tie a category to an ad. This should be a many to many relationship (an ad can have many categories, and a category can have many ads associated with it).
+
+- In addition, allow users to search through ads by category.
+
+- Intended Redirects. When a user is redirected to the login page, after a successful login, they should be sent back to the page they were trying to visit, as opposed to the default, the profile page.
