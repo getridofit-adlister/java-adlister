@@ -18,11 +18,10 @@ public class Ad {
         this.description = description;
     }
 
-    public Ad(long userId, String title, String description, long categories) {
+    public Ad(long userId, String title, String description) {
         this.userId = userId;
         this.title = title;
         this.description = description;
-        this.categories = categories;
         this.date = setDate();
     }
 
@@ -50,12 +49,10 @@ public class Ad {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() { return description; }
 
-    public Long getCategories() {
-        return categories;
+    public String getDate() {
+        return date;
     }
 
     public void setCategories(Long categories) {
