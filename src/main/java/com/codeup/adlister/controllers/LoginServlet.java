@@ -14,6 +14,12 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if(request.getSession().getAttribute("validAttempt") != null) {
+            Boolean loginIsValid = (Boolean) request.getSession().getAttribute("validAttempt");
+            request.setAttribute("loginIsValid", loginIsValid);
+        }
+
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
@@ -42,6 +48,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
+            request.getSession().setAttribute("validAttempt", validAttempt);
         }
     }
 }
