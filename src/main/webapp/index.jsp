@@ -11,5 +11,8 @@
     <div class="container">
         <h1>Welcome to the Adlister!</h1>
     </div>
+
+    <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
+
 </body>
 </html>
