@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,9 +19,20 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
-            <div class="form-group">
-                <label for="categories">Categories</label>
-                <textarea id="categories" name="categories" class="form-control" type="text"></textarea>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Choose Categories
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <c:forEach var="category" items="${categories}">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}">
+                            <label class="form-check-label" for="${category.title}">
+                                ${category.title}
+                            </label>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
