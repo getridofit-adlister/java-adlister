@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -34,10 +33,86 @@
                     </c:forEach>
                 </div>
             </div>
+            <div class="file-url">
+                <textarea id="file-url" name="file-url" type="text" hidden></textarea>
+            </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
 
-    <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
+<div class="box">
+    <form id="pick-form">
+        <div class="field">
+            <div class="control">
+                <button class="button" type="button" id="picker">Pick file</button>
+                <input type="hidden" id="fileupload" name="fileupload">
+            </div>
+            <div class="control" id="nameBox"></div>
+            <div class="control" id="urlBox"></div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="button" type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
+
+<script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
+
+<script>
+    const client = filestack.init('AHvtwvhIFTIy8EfuGj9OTz');
+    const options = {
+        onUploadDone: updateForm,
+        maxSize: 10 * 1024 * 1024,
+        accept: 'image/*',
+        uploadInBackground: false,
+    };
+    const picker = client.picker(options);
+
+    // Get references to the DOM elements
+
+    const form = document.getElementById('pick-form');
+    const fileInput = document.getElementById('fileupload');
+    const btn = document.getElementById('picker');
+    const nameBox = document.getElementById('nameBox');
+    const urlBox = document.getElementById('urlBox');
+    let fileUrlField = document.querySelector('#file-url');
+
+    // Add our event listeners
+
+    btn.addEventListener('click', function (e) {
+        console.log("hellio");
+        e.preventDefault();
+        picker.open();
+    });
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Submitting: ' + fileInput.value);
+    });
+
+    // Helper to overwrite the field input value
+
+    function updateForm(result) {
+        const fileData = result.filesUploaded[0];
+        fileInput.value = fileData.url;
+        fileUrlField.value = fileInput.value;
+
+        // Some ugly DOM code to show some data.
+        const name = document.createTextNode('Selected: ' + fileData.filename);
+        const url = document.createElement('a');
+        url.href = fileData.url;
+        url.appendChild(document.createTextNode(fileData.url));
+        nameBox.appendChild(name);
+        urlBox.appendChild(document.createTextNode('Uploaded to: '));
+        urlBox.appendChild(url);
+    };
+
+</script>
+
 </body>
 </html>
