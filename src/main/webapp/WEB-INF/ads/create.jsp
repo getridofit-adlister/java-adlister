@@ -24,8 +24,8 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <c:forEach var="category" items="${categories}">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}">
+                        <div class="form-check form-check-inline form-group">
+                            <input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}" name="${category.title}">
                             <label class="form-check-label" for="${category.title}">
                                 ${category.title}
                             </label>
@@ -37,6 +37,7 @@
                 <textarea id="file-url" name="file-url" type="text" hidden></textarea>
             </div>
             <input type="submit" class="btn btn-block btn-primary">
+
         </form>
     </div>
 

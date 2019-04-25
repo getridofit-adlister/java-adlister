@@ -39,6 +39,18 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public Ad last() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads ORDER BY id DESC LIMIT 1;");
+            ResultSet rs = stmt.executeQuery();
+            List<Ad> ads = createAdsFromResults(rs);
+            return ads.get(0);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
     public List<Ad> userAds(long id){
         PreparedStatement stmt = null;
         try {
@@ -57,11 +69,10 @@ public class MySQLAdsDao implements Ads {
             stmt = connection.prepareStatement("SELECT * FROM ads WHERE id = ?");
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
-//            return createAdsFromResults(rs);
             List<Ad> ads = createAdsFromResults(rs);
             return ads.get(0);
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            throw new RuntimeException("Error retrieving this ad.", e);
         }
     }
 

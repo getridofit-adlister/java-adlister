@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
@@ -20,7 +21,7 @@ public class CreateAdServlet extends HttpServlet {
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
         } else {
-            request.setAttribute("categories",DaoFactory.getCategoriesDao().all());
+            request.setAttribute("categories", DaoFactory.getCategoriesDao().all());
             request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
                     .forward(request, response);
 
@@ -29,10 +30,10 @@ public class CreateAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        Long checkedId = null;
+        List<Long> checkedIds = new ArrayList<>();
         User user = (User) request.getSession().getAttribute("user");
-        String categoryString = request.getParameter("category");
-        Long categoryId = Long.parseLong(categoryString);
+        List<Category> categories = DaoFactory.getCategoriesDao().all();
         Ad ad = new Ad(
                 user.getId(),
                 request.getParameter("title"),
@@ -41,6 +42,22 @@ public class CreateAdServlet extends HttpServlet {
         );
 
         DaoFactory.getAdsDao().insert(ad);
+
+        Ad createdAd = DaoFactory.getAdsDao().last();
+        long createdAdId = createdAd.getId();
+
+        for (Category cat:categories
+             ) {
+            String checkedIdString = request.getParameter(cat.getTitle());
+            if(checkedIdString != null){
+                checkedId = Long.parseLong(checkedIdString);
+                checkedIds.add(checkedId);
+            }
+        }
+        for (Long catId: checkedIds
+             ) {DaoFactory.getAdCatDao().insert(createdAdId,catId);
+
+        }
         response.sendRedirect("/profile");
     }
 }
