@@ -14,12 +14,10 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
     <div class="container">
-
-        <c:forEach var="ad" items="${ad}">
-            <img src="${ad.imageURL}" height="200" width="800">
-
-            <h1>${ad.title}</h1>
+        <img src="${ad.imageURL}">
+        <h1>${ad.title}</h1>
         </div>
         <div class="row">
             <p>${ad.description}</p>
@@ -33,9 +31,6 @@
             </div>
         </div>
 
-
-
-        </c:forEach>
     </div>
 
     <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
