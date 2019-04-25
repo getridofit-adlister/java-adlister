@@ -19,7 +19,7 @@
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
             <div class="file-url">
-                <textarea id="file-url" name="file-url" type="text"></textarea>
+                <textarea id="file-url" name="file-url" type="text" hidden></textarea>
             </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
