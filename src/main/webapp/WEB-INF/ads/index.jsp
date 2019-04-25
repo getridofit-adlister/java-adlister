@@ -12,20 +12,23 @@
 <div class="container">
     <h1>Here Are all the ads!</h1>
     <div class="row">
-        <c:forEach var="ad" items="${ads}">
-            <div class="col-sm-3 p-0">
-                <div class="card" style="width: 16rem;">
+
+        <c:forEach var="userAd" items="${userAds}">
+            <div class="col-sm-3 mr-3">
+                <div class="card" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="..." style="height: 12rem">
                     <div class="card-body">
-                        <h5 class="card-title"><a>${ad.title}</a></h5>
-                        <p class="card-text my-1">${ad.description}</p>
-                        <p class="card-text my-1">posted by: ${user.username}</p>
-                        <a href="/thisAd?id=${ad.id}" class="card-text my-1">View Ad</a>
+                        <h5 class="card-title"><a>${userAd.ad.title}</a></h5>
+                        <p class="card-text">${userAd.ad.description}</p>
+                        <a href="/thisAd?id=${userAd.ad.id}" class="btn btn-primary">View Ad</a>
+                        <p>posted by: ${userAd.user.username}</p>
+
                     </div>
 
                 </div>
             </div>
         </c:forEach>
+
     </div>
 
     <c:forEach var="ad" items="${ads}">
