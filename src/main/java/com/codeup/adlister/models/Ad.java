@@ -64,7 +64,7 @@ public class Ad {
     }
 
     private String setDate() {
-        String pattern = "yyyy-mm-dd";
+        String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDate = new SimpleDateFormat(pattern);
         String date = simpleDate.format(new Date());
         return date;

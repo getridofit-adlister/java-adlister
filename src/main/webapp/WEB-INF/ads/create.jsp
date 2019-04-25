@@ -25,8 +25,8 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <c:forEach var="category" items="${categories}">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}">
+                        <div class="form-check form-check-inline form-group">
+                            <input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}" name="${category.title}">
                             <label class="form-check-label" for="${category.title}">
                                 ${category.title}
                             </label>
@@ -34,7 +34,7 @@
                     </c:forEach>
                 </div>
             </div>
-            <input type="submit" class="btn btn-block btn-primary">
+            <input type="submit" class="btn btn-primary">
         </form>
     </div>
 
