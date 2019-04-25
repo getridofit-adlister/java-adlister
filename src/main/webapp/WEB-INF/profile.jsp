@@ -21,6 +21,7 @@
                             <h5 class="card-title"><a>${ad.title}</a></h5>
                             <p class="card-text">${ad.description}</p>
                             <a href="/thisAd?id=${ad.id}" class="btn btn-primary">View Ad</a>
+                            <p>posted by: ${user.username}</p>
                         </div>
                     </div>
                 </div>

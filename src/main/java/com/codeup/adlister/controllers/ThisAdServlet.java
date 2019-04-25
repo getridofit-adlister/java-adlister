@@ -17,13 +17,13 @@ public class ThisAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idString = request.getParameter("id");
         Long id = Long.parseLong(idString);
-
         request.setAttribute("ad", DaoFactory.getAdsDao().thisAd(id));
-        Ad ad =  (Ad) DaoFactory.getAdsDao().thisAd(id);
+
+        Ad ad = (Ad) DaoFactory.getAdsDao().thisAd(id);
+
         Long userId = ad.getUserId();
         User user  = DaoFactory.getUsersDao().findByUserId(userId);
-        System.out.println(user.getUsername());
-        System.out.println("test");
+
         request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/ads/thisAd.jsp").forward(request, response);
     }

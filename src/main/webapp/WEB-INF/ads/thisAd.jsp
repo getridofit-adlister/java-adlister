@@ -16,9 +16,21 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
 
+        <div class="row">
             <h1>${ad.title}</h1>
+        </div>
+        <div class="row">
             <p>${ad.description}</p>
-            <p>${user.username}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <p>posted by: ${user.username}</p>
+            </div>
+            <div class="col-md-3">
+                <p><a href="mailto:bob@bob.com" target="_blank" rel="noopener">${user.email}</a></p>
+            </div>
+        </div>
+
 
 
     </div>
