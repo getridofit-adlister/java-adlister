@@ -1,9 +1,10 @@
 USE adlister_db;
 
 DROP TABLE IF EXISTS ads_category;
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS ads;
+DROP TABLE IF EXISTS users;
+
 
 CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -19,6 +20,7 @@ CREATE TABLE ads (
     title VARCHAR(240) NOT NULL,
     description TEXT NOT NULL,
     create_date date NOT NULL,
+    imageUrl TEXT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
         ON DELETE CASCADE

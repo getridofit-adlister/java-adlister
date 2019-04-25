@@ -27,6 +27,14 @@
                 </div>
             </c:forEach>
         </div>
+        <c:forEach var="ad" items="${ads}">
+            <div class="col-md-6">
+                <img src="${ad.imageURL}" height="200" width="800">
+                <h2><a href="/thisAd?id=${ad.id}">${ad.title}</a></h2>
+                <p>${ad.description}</p>
+            </div>
+        </c:forEach>
+
     </div>
 
 

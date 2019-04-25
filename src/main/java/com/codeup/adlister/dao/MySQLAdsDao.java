@@ -39,6 +39,18 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public Ad last() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads ORDER BY id DESC LIMIT 1;");
+            ResultSet rs = stmt.executeQuery();
+            List<Ad> ads = createAdsFromResults(rs);
+            return ads.get(0);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
     public List<Ad> userAds(long id){
         PreparedStatement stmt = null;
         try {
@@ -57,11 +69,10 @@ public class MySQLAdsDao implements Ads {
             stmt = connection.prepareStatement("SELECT * FROM ads WHERE id = ?");
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
-//            return createAdsFromResults(rs);
             List<Ad> ads = createAdsFromResults(rs);
             return ads.get(0);
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            throw new RuntimeException("Error retrieving this ad.", e);
         }
     }
 
@@ -69,12 +80,14 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Long insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(user_id, title, description,create_date) VALUES (?, ?, ?, ?)";
+
+            String insertQuery = "INSERT INTO ads(user_id, title, description, create_date, imageURL) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
             stmt.setString(2, ad.getTitle());
             stmt.setString(3, ad.getDescription());
             stmt.setString(4,ad.getDate());
+            stmt.setString(5, ad.getImageURL());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -89,7 +102,8 @@ public class MySQLAdsDao implements Ads {
             rs.getLong("id"),
             rs.getLong("user_id"),
             rs.getString("title"),
-            rs.getString("description")
+            rs.getString("description"),
+            rs.getString("imageURL")
         );
     }
 
