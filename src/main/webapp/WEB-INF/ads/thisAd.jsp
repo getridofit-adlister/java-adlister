@@ -15,10 +15,11 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <c:forEach var="ad" items="${ad}" >
+
             <h1>${ad.title}</h1>
             <p>${ad.description}</p>
-        </c:forEach>
+            <p>${user.username}</p>
+
 
     </div>
 
