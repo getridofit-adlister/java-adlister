@@ -28,6 +28,13 @@ public class Ad {
         this.date = setDate();
     }
 
+    //constructor for editing
+    public Ad(String title, String description, String imageURL) {
+        this.title = title;
+        this.description = description;
+        this.imageURL = imageURL;
+    }
+
     public long getId() {
         return id;
     }

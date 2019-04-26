@@ -8,7 +8,7 @@ public class UserAd {
         this.user = user;
         this.ad = ad;
     }
-    public UserAd(){};
+    public UserAd(){}
 
     public User getUser() {
         return user;

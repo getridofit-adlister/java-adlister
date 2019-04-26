@@ -26,7 +26,6 @@ public class CreateAdServlet extends HttpServlet {
                     .forward(request, response);
 
         }
-        System.out.println(DaoFactory.getCategoriesDao().all());
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
