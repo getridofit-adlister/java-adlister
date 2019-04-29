@@ -26,15 +26,7 @@ public class AdsIndexServlet extends HttpServlet {
             userAd.setUser(user);
             userAds.add(userAd);
         }
-        //get thisAd info to display Ad username
-//        String idString = request.getParameter("id");
-//        Long id = Long.parseLong(idString);
-//
-//        Ad ad = DaoFactory.getAdsDao().thisAd(id);
-//        Long userId = ad.getUserId();
-//        User user = DaoFactory.getUsersDao().findByUserId(userId);
-//
-//        request.setAttribute("user", user);
+
         request.setAttribute("userAds", userAds);
 
         List<Ad> allAds = DaoFactory.getAdsDao().all();

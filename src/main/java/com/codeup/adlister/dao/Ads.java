@@ -15,4 +15,6 @@ public interface Ads {
     Ad thisAd(long id);
 
     Ad last();
+
+    boolean updateAd(Ad ad);
 }

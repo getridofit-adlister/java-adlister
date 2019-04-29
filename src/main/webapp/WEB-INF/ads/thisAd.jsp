@@ -16,11 +16,12 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <img src="${ad.imageURL}">
-        <h1>${ad.title}</h1>
-        </div>
         <div class="row">
-            <p>${ad.description}</p>
+            <div class="col">
+                <img src="${ad.imageURL}">
+                <h1>${ad.title}</h1>
+                <p>${ad.description}</p>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-3">
@@ -29,6 +30,10 @@
             <div class="col-md-3">
                 <p><a href="mailto:bob@bob.com" target="_blank" rel="noopener">${user.email}</a></p>
             </div>
+        </div>
+        <div class="row">
+            <a href="/editAd" class="btn btn-primary m-2">Edit</a>
+            <a href="#" class="btn btn-primary m-2">Delete</a>
         </div>
 
     </div>
