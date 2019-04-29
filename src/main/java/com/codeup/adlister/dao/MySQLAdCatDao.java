@@ -33,4 +33,16 @@ public class MySQLAdCatDao implements AdCats {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+
+    public String delete(long adId){
+        try {
+            String deleteQuery = "DELETE FROM ads_category WHERE ad_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(deleteQuery);
+            stmt.setLong(1, adId);
+            stmt.executeUpdate();
+            return "success";
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
+    }
 }

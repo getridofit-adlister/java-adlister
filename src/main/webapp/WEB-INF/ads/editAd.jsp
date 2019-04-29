@@ -34,6 +34,7 @@
                         </div>
                     </c:forEach>
                 </div>
+                <input type="text" value="${ad.id}" name="id" id="id" hidden disabled>
             </div>
             <div class="file-url">
                 <textarea id="file-url" name="file-url" type="text" hidden></textarea>

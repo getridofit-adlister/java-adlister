@@ -28,13 +28,15 @@
                 <p>posted by: ${user.username}</p>
             </div>
             <div class="col-md-3">
-                <p><a href="mailto:bob@bob.com" target="_blank" rel="noopener">${user.email}</a></p>
+                <p><a href="mailto:bob@bob.com?subject=${ad.title}" rel="noopener">${user.email}</a></p>
             </div>
         </div>
-        <div class="row">
-            <a href="/editAd" class="btn btn-primary m-2">Edit</a>
-            <a href="#" class="btn btn-primary m-2">Delete</a>
-        </div>
+        <c:if test="${loggedUser.id == ad.userId}">
+            <div class="row">
+                <a href="/editAd?id=${ad.id}" class="btn btn-primary m-2">Edit</a>
+            </div>
+        </c:if>
+
 
     </div>
 

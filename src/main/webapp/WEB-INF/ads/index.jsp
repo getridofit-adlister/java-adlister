@@ -10,13 +10,12 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1>Welcome to Adlister!</h1>
     <div class="row">
-
         <c:forEach var="userAd" items="${userAds}">
-            <div class="col-sm-3 mr-3">
+            <div class="col-sm-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="..." style="height: 12rem">
+                    <img src="${userAd.ad.imageURL}" class="card-img-top" alt="..." style="height: 12rem">
                     <div class="card-body">
                         <h5 class="card-title"><a>${userAd.ad.title}</a></h5>
                         <p class="card-text">${userAd.ad.description}</p>
@@ -30,14 +29,6 @@
         </c:forEach>
 
     </div>
-
-    <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <img src="${ad.imageURL}" height="200" width="800">
-            <h2><a href="/thisAd?id=${ad.id}">${ad.title}</a></h2>
-            <p>${ad.description}</p>
-        </div>
-    </c:forEach>
 </div>
 
 <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
