@@ -23,7 +23,9 @@ public class ThisAdServlet extends HttpServlet {
 
         Long userId = ad.getUserId();
         User user  = DaoFactory.getUsersDao().findByUserId(userId);
-
+        Object lUser = request.getSession().getAttribute("user");
+        User loggedUser = (User) lUser;
+        request.setAttribute("loggedUser",loggedUser);
         request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/ads/thisAd.jsp").forward(request, response);
     }

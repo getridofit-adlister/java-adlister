@@ -33,11 +33,16 @@ public class CreateAdServlet extends HttpServlet {
         List<Long> checkedIds = new ArrayList<>();
         User user = (User) request.getSession().getAttribute("user");
         List<Category> categories = DaoFactory.getCategoriesDao().all();
+
+        String fileURL = request.getParameter("file-url");
+        if(fileURL.isEmpty()){
+            fileURL = "https://cdn.filestackcontent.com/UMsdZdq5SAiRuYIiPSfK";
+        }
         Ad ad = new Ad(
                 user.getId(),
                 request.getParameter("title"),
                 request.getParameter("description"),
-                request.getParameter("file-url")
+                fileURL
         );
 
         DaoFactory.getAdsDao().insert(ad);

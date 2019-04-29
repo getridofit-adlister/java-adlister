@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
+@WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/index.jsp")
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,14 +29,7 @@ public class AdsIndexServlet extends HttpServlet {
 
         request.setAttribute("userAds", userAds);
 
-        List<Ad> allAds = DaoFactory.getAdsDao().all();
-        for (Ad ad : allAds) {
-            System.out.println(ad.getImageURL());
-            System.out.println(ad.getDescription());
-            System.out.println(ad.getTitle());
-        }
-
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/ads/index.jsp").forward(request, response);
     }
 }
