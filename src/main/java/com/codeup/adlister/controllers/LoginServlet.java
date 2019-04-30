@@ -66,7 +66,9 @@ public class LoginServlet extends HttpServlet {
             wrongPass = !Password.check(password, user.getPassword());
         }
 
+
         validAttempt = !usernameIsEmpty && !passwordIsEmpty && !wrongPass && userExists;
+
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
