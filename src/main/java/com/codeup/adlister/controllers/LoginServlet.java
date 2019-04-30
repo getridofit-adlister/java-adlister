@@ -13,7 +13,15 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
+    boolean usernameIsEmpty;
+    boolean passwordIsEmpty;
+    boolean wrongPass;
+    boolean validAttempt;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("emptyName",usernameIsEmpty);
+        request.setAttribute("emptyPass",passwordIsEmpty);
+        request.setAttribute("wrongPass",wrongPass);
 
         if(request.getSession().getAttribute("validAttempt") != null) {
             Boolean loginIsValid = (Boolean) request.getSession().getAttribute("validAttempt");
@@ -32,21 +40,22 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
+        usernameIsEmpty=false;
+        passwordIsEmpty=false;
+        wrongPass=false;
+        validAttempt=false;
+        usernameIsEmpty = username.isEmpty();
+        passwordIsEmpty = password.isEmpty();
 
-        if (user == null) {
-            response.sendRedirect("/login");
-            return;
-        }
+        wrongPass = !Password.check(password, user.getPassword());
 
-
-        boolean validAttempt = Password.check(password, user.getPassword());
+        validAttempt = !usernameIsEmpty && !passwordIsEmpty && !wrongPass
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/ads");
+            response.sendRedirect("/");
         } else {
             response.sendRedirect("/login");
-            request.getSession().setAttribute("validAttempt", validAttempt);
         }
     }
 }

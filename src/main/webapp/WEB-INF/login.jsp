@@ -17,13 +17,26 @@
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
+                <c:if test="${emptyName}">
+                    <p>* Please Enter a Username *</p>
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
+                <c:if test="${emtpyPass}">
+                    <p>* Please Enter a Password *</p>
+                </c:if>
+                <c:if test="${wrongPass}">
+                    <p>* Incorrect Password *</p>
+                </c:if>
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
+        <br>
+        <div>
+            <p>New User? <a href="/register">CLICK HERE</a> to register</p>
+        </div>
     </div>
 
 </body>

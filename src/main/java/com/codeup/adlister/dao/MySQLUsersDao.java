@@ -108,6 +108,22 @@ public class MySQLUsersDao implements Users {
         );
     }
 
+
+    public List<String> getUsernames(){
+        List<String> usernames = new ArrayList<>();
+        String query = "SELECT username FROM users";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                usernames.add(rs.getString("username"));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException("Error retrieving usernames", e);
+        }
+        return usernames;
+    }
+
     private List<User> createUserResults(ResultSet rs) throws SQLException {
         List<User> users = new ArrayList<>();
         while (rs.next()) {
@@ -115,5 +131,6 @@ public class MySQLUsersDao implements Users {
         }
         return users;
     }
+
 
 }
