@@ -9,12 +9,12 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="container">
+    <div class="container-fluid">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
         <h3>Here are the ads you've posted</h3>
         <div class="row">
             <c:forEach var="ad" items="${ads}">
-                <div class="col-sm-3" style="margin-right: 1px">
+                <div class="col-12 col-md-3 my-2">
                     <div class="card" style="width: 18rem;">
                         <img src="${ad.imageURL}" class="card-img-top" alt="..." style="height: 12rem">
                         <div class="card-body">

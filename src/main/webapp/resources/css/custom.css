@@ -1,0 +1,11 @@
+img {
+    height: 400px;
+}
+
+.card-text {
+    min-height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}

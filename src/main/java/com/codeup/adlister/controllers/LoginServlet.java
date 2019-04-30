@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 
         wrongPass = !Password.check(password, user.getPassword());
 
-        validAttempt = !usernameIsEmpty && !passwordIsEmpty && !wrongPass
+        validAttempt = !usernameIsEmpty && !passwordIsEmpty && !wrongPass;
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
