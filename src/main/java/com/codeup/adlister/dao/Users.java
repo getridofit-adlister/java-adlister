@@ -9,4 +9,5 @@ public interface Users {
     Long insert(User user);
     User findByUserId(long id);
     boolean updateUser(User user);
+    List<String> getUsernames();
 }

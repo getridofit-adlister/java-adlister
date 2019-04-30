@@ -5,6 +5,8 @@ import com.codeup.adlister.models.User;
 import com.mysql.cj.api.mysqla.result.Resultset;
 import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MySQLUsersDao implements Users {
     private Connection connection;
@@ -92,4 +94,18 @@ public class MySQLUsersDao implements Users {
         );
     }
 
+    public List<String> getUsernames(){
+        List<String> usernames = new ArrayList<>();
+        String query = "SELECT username FROM users";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                usernames.add(rs.getString("username"));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException("Error retrieving usernames", e);
+        }
+        return usernames;
+    }
 }

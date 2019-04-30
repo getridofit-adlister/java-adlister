@@ -21,9 +21,7 @@
                         <p class="card-text">${userAd.ad.description}</p>
                         <a href="/thisAd?id=${userAd.ad.id}" class="btn btn-primary">View Ad</a>
                         <p>posted by: ${userAd.user.username}</p>
-
                     </div>
-
                 </div>
             </div>
         </c:forEach>
