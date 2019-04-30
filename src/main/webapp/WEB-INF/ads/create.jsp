@@ -15,15 +15,24 @@
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
+                <c:if test="${titleEmpty}">
+                    <p>* Please Enter a Title *</p>
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
+                <c:if test="${descriptionEmpty}">
+                    <p>* Please Enter a Description *</p>
+                </c:if>
             </div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Choose Categories
                 </button>
+                <c:if test="${catEmpty}">
+                    <p>* Please Choose at least one Category*</p>
+                </c:if>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <c:forEach var="category" items="${categories}">
                         <div class="form-check form-check-inline form-group">
