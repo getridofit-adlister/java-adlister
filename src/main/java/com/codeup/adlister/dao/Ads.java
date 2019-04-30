@@ -19,4 +19,6 @@ public interface Ads {
     boolean updateAd(Ad ad);
 
     boolean deleteAd(long id);
+
+    List<Ad> containsAd(String searchQuery);
 }
