@@ -15,27 +15,24 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-center mt-5">
+            <div class="col"></div>
             <div class="col">
                 <img src="${ad.imageURL}">
                 <h1>${ad.title}</h1>
                 <p>${ad.description}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
                 <p>posted by: ${user.username}</p>
+                <p><a href="mailto:${user.email}?subject=${ad.title}" rel="noopener">${user.email}</a></p>
+                <c:if test="${loggedUser.id == ad.userId}">
+                    <div class="row">
+                        <a href="/editAd?id=${ad.id}" class="btn btn-primary m-2">Edit</a>
+                    </div>
+                </c:if>
             </div>
-            <div class="col-md-3">
-                <p><a href="mailto:bob@bob.com?subject=${ad.title}" rel="noopener">${user.email}</a></p>
-            </div>
+            <div class="col"></div>
         </div>
-        <c:if test="${loggedUser.id == ad.userId}">
-            <div class="row">
-                <a href="/editAd?id=${ad.id}" class="btn btn-primary m-2">Edit</a>
-            </div>
-        </c:if>
+
 
 
     </div>
