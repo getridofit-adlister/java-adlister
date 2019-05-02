@@ -9,7 +9,7 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Update information.</h1>
+        <h1 class="d-flex justify-content-center display-4 my-4">Update information</h1>
         <form action="/editProfile" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
