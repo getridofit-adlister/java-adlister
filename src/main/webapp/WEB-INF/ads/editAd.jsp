@@ -10,7 +10,7 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1 class="my-4">Edit Ad</h1>
+        <h1 class="d-flex justify-content-center display-4 my-4">Edit Ad</h1>
         <form id="form" action="/editAd" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -20,44 +20,46 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text" placeholder="${ad.description}"></textarea>
             </div>
-            <div class="row d-flex justify-content-between">
-
-                <div class="col d-flex justify-content-center dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Choose Categories
-                    </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <c:forEach var="category" items="${categories}">
-                        <div class="form-check form-check-inline form-group">
-                            <input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}" name="${category.title}">
-                            <label class="form-check-label" for="${category.title}">
-                                    ${category.title}
-                            </label>
-                        </div>
-                    </c:forEach>
-                </div>
-                    <input type="text" value="${ad.id}" name="id" id="id" hidden disabled>
-                </div>
-                <div class="file-url">
-                    <textarea id="file-url" name="file-url" type="text" hidden></textarea>
-                </div>
-                <div class="col box d-flex justify-content-center">
-                    <form id="pick-form">
-                        <div class="field">
-                            <div class="control">
-                                <button class="btn btn-primary button" type="button" id="picker">Pick file</button>
-                                <input type="hidden" id="fileupload" name="fileupload">
-                            </div>
-                            <div class="control" id="nameBox"></div>
-                            <div class="control" id="urlBox"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <div class="row">
-                <input form="form" type="submit" class="col btn btn-block btn-primary">
-                <a href="/profile" class="col btn btn-block btn-primary m-2">Cancel</a>
+                <div class="col">
+                    <%--<div class="dropdown">--%>
+                        <%--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+                            <%--Choose Categories--%>
+                        <%--</button>--%>
+                    <%--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--%>
+                        <%--<c:forEach var="category" items="${categories}">--%>
+                            <%--<div class="form-check form-check-inline form-group">--%>
+                                <%--<input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}" name="${category.title}">--%>
+                                <%--<label class="form-check-label" for="${category.title}">--%>
+                                        <%--${category.title}--%>
+                                <%--</label>--%>
+                            <%--</div>--%>
+                        <%--</c:forEach>--%>
+                    <%--</div>--%>
+                        <%--<input type="text" value="${ad.id}" name="id" id="id" hidden disabled>--%>
+                    <%--</div>--%>
+                    <%--<div class="file-url">--%>
+                        <%--<textarea id="file-url" name="file-url" type="text" hidden></textarea>--%>
+                    <%--</div>--%>
+                    <%--<div class="box my-2">--%>
+                        <%--<form id="pick-form">--%>
+                            <%--<div class="field">--%>
+                                <%--<div class="control">--%>
+                                    <%--<button class="btn btn-primary button" type="button" id="picker">Pick file</button>--%>
+                                    <%--<input type="hidden" id="fileupload" name="fileupload">--%>
+                                <%--</div>--%>
+                                <%--<div class="control" id="nameBox"></div>--%>
+                                <%--<div class="control" id="urlBox"></div>--%>
+                            <%--</div>--%>
+                        <%--</form>--%>
+                    <%--</div>--%>
+
+                    <input form="form" type="submit" class="btn btn-block btn-primary my-2">
+                    <a href="/profile" class="btn btn-block btn-primary my-2">Cancel</a>
+
+                </div>
             </div>
+
 
 
         </form>

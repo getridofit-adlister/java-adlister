@@ -10,8 +10,8 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container-fluid">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
-        <h3>Here are the ads you've posted</h3>
+        <h4 class="my-4">Welcome, ${sessionScope.user.username}!</h4>
+        <h1 class="d-flex justify-content-center my-4 display-4">Your ads</h1>
         <div class="row">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-12 col-md-3 my-2">
