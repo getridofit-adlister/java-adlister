@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Create a new Ad</h1>
+        <h1 class="d-flex justify-content-center">Create a new Ad</h1>
         <form action="/ads/create" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -26,50 +26,52 @@
                     <p>* Please Enter a Description *</p>
                 </c:if>
             </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Choose Categories
-                </button>
-                <c:if test="${catEmpty}">
-                    <p>* Please Choose at least one Category*</p>
-                </c:if>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <c:forEach var="category" items="${categories}">
-                        <div class="form-check form-check-inline form-group">
-                            <input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}" name="${category.title}">
-                            <label class="form-check-label" for="${category.title}">
-                                ${category.title}
-                            </label>
+            <div class="row">
+                <div class="col">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle my-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Choose Categories
+                        </button>
+                        <c:if test="${catEmpty}">
+                            <p>* Please Choose at least one Category*</p>
+                        </c:if>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <c:forEach var="category" items="${categories}">
+                                <div class="form-check form-check-inline form-group">
+                                    <input class="form-check-input" type="checkbox" value="${category.id}" id="${category.title}" name="${category.title}">
+                                    <label class="form-check-label" for="${category.title}">
+                                        ${category.title}
+                                    </label>
+                                </div>
+                            </c:forEach>
                         </div>
-                    </c:forEach>
+                    </div>
+                    <%--<div class="file-url">--%>
+                        <%--<textarea id="file-url" name="file-url" type="text" hidden></textarea>--%>
+                    <%--</div>--%>
+                    <%--<input type="submit" class="btn btn-block btn-primary">--%>
+                    <div class="box">
+                        <form id="pick-form">
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button btn btn-primary my-2" type="button" id="picker">Pick file</button>
+                                    <input type="hidden" id="fileupload" name="fileupload">
+                                    <textarea id="file-url" name="file-url" type="text" hidden></textarea>
+                                </div>
+                                <div class="control" id="nameBox"></div>
+                                <div class="control" id="urlBox"></div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="button btn btn-primary my-2" type="submit" value="Submit">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="file-url">
-                <textarea id="file-url" name="file-url" type="text" hidden></textarea>
-            </div>
-            <input type="submit" class="btn btn-block btn-primary">
-
         </form>
     </div>
-
-<div class="box">
-    <form id="pick-form">
-        <div class="field">
-            <div class="control">
-                <button class="button" type="button" id="picker">Pick file</button>
-                <input type="hidden" id="fileupload" name="fileupload">
-            </div>
-            <div class="control" id="nameBox"></div>
-            <div class="control" id="urlBox"></div>
-        </div>
-        <div class="field">
-            <div class="control">
-                <input class="button" type="submit" value="Submit">
-            </div>
-        </div>
-    </form>
-</div>
-
 
 <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
 
@@ -122,7 +124,7 @@
         nameBox.appendChild(name);
         urlBox.appendChild(document.createTextNode('Uploaded to: '));
         urlBox.appendChild(url);
-    };
+    }
 
 </script>
 

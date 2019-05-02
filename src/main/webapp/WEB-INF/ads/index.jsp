@@ -10,7 +10,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container-fluid">
-    <h1 class="my-4">Welcome to Adlister!</h1>
+    <h1 class="my-4">Welcome to Get rid of it!</h1>
     <div class="row">
         <c:forEach var="userAd" items="${userAds}">
             <div class="col-12 col-md-3 my-2">
