@@ -24,6 +24,7 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block">
     <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
+    <jsp:include page="/WEB-INF/partials/footer.jsp" />
 
 
 </body>

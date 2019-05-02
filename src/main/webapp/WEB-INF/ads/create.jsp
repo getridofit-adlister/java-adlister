@@ -74,6 +74,7 @@
     </div>
 
 <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
+<jsp:include page="/WEB-INF/partials/footer.jsp" />
 
 <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
 

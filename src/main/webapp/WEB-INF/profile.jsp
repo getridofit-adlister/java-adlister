@@ -32,6 +32,7 @@
 
 
     <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
+    <jsp:include page="/WEB-INF/partials/footer.jsp" />
 
 </body>
 </html>

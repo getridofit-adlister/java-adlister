@@ -16,7 +16,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container-fluid">
-        <div class="row d-flex justify-content-center align-items-center mt-5">
+        <div class="row d-flex justify-content-center align-items-center my-5">
             <div class="col"></div>
             <div class="col">
                 <img src="${ad.imageURL}">
@@ -38,6 +38,7 @@
     </div>
 
     <jsp:include page="/WEB-INF/partials/bootstrapJS.jsp" />
+    <jsp:include page="/WEB-INF/partials/footer.jsp" />
 
 </body>
 </html>

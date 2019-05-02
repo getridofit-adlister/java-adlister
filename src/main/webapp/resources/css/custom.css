@@ -9,3 +9,8 @@ img {
     text-overflow: ellipsis;
 
 }
+
+#footer {
+    height: 200px;
+    border:1px solid #ddd;
+}
